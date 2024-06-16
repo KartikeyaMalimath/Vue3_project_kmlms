@@ -19,4 +19,4 @@ app.add_middleware(
 
 @app.get("/")
 async def read_item():
-    return JSONResponse({"data": "Hello World"})
+    return {"message": "Hello from FastAPI!"}
