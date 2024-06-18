@@ -43,13 +43,7 @@ const closeMenu = () => {
                     </div>
                 </div>
                 <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item d-flex align-items-center">
-                        <router-link to="/" class="px-0 nav-link font-weight-bold text-white"                            >
-                            <i class="fa fa-user me-sm-2"></i>
-                            <span class="d-sm-inline d-none">Sign In</span>
-                        </router-link>
-                    </li>
-                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                    <li class="nav-item ps-3 d-flex align-items-center">
                         <a href="#" @click="minimizeSidebar" class="p-0 nav-link text-white" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
                                 <i class="sidenav-toggler-line bg-white"></i>

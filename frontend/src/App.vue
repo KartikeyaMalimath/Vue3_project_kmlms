@@ -3,6 +3,8 @@ import { computed } from "vue";
 import { usePiniaStore } from '@/store';
 import Sidenav from "@/layouts/Sidenav/SidebarLayout.vue";
 import Navbar from "@/layouts/Navbars/NavBar.vue";
+import FooterDashboard from "@/layouts/FooterDashboard.vue";
+
 
 const store = usePiniaStore();
 const isNavFixed = computed(() => store.IsNavFixed);
@@ -41,22 +43,13 @@ const navClasses = computed(() => {
       <router-view />
     </transition>
 
-    <app-footer v-show="showFooter" />
+    <footer-dashboard v-show="showFooter" />
 
     <configurator :toggle="toggleConfigurator" :class="[showConfig ? 'show' : '', hideConfigButton ? 'd-none' : '']" />
   </main>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 0px;
-  padding: 0px;
-}
-
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;

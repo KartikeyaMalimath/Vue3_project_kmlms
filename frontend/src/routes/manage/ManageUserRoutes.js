@@ -4,7 +4,7 @@ const routes = [
         name: 'ManageDashboard',
         component: () => import('@/pages/manage/ManageDashboard.vue'),
         meta: {
-            currentDirectory: "LMS Management",
+            currentDirectory: "Management",
             currentPage: "Dashboard"
         }
     },
@@ -13,8 +13,17 @@ const routes = [
         name: 'ManageEnterprises',
         component: () => import('@/pages/manage/ManageEnterprises.vue'),
         meta: {
-            currentDirectory: "LMS Management",
+            currentDirectory: "Management",
             currentPage: "Enterprises"
+        }
+    },
+    {
+        path: '/enterprises/:eid',
+        name: 'ManageEnterprisesDetails',
+        component: () => import('@/pages/manage/ManageEnterpriseDetails.vue'),
+        meta: {
+            currentDirectory: "Management / Enterprises",
+            currentPage: "View Enterprise"
         }
     }
 ];

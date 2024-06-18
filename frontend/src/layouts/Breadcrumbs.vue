@@ -26,7 +26,7 @@ const currentDirectory = computed(() => route.meta.currentDirectory || "");
           :class="isNavFixed ? 'text-dark' : 'text-white'"
           class="opacity-8"
           href="#"
-          >Pages</a
+          >LMS</a
         >
       </li>
       <li

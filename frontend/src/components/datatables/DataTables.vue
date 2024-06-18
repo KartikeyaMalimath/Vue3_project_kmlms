@@ -1,7 +1,7 @@
 <!-- DataTableView.vue -->
 <template>
     <div class="table-responsive w-100">
-        <table ref="dataTableRef" class="table table-striped w-100 display"></table>
+        <table ref="dataTableRef" class="table table-striped w-100"></table>
     </div>
 </template>
 
@@ -65,8 +65,8 @@ const initializeDataTable = () => {
             columns: props.columns.map((column) => ({
                 title: column.title,
                 data: column.data,
-                render: column.render ? column.render : null, // Adjusted for potential API change
-                className: column.className ? column.className : '' // Changed from headerClass to className
+                render: column.render ? column.render : null, 
+                className: column.headerClass ? column.headerClass : ''
             })),
             initComplete: options.initComplete
         });

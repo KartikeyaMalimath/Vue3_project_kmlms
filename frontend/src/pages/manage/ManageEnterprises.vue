@@ -1,8 +1,8 @@
 <script setup>
 import { onBeforeMount } from "vue";
 import { usePiniaStore } from "@/store";
-import DataTables from "@/components/DataTables.vue";
-import ArgonBadge from "@/components/ArgonBadge.vue";
+import DataTables from "@/components/datatables/DataTables.vue";
+
 
 
 const store = usePiniaStore();
@@ -23,13 +23,7 @@ onBeforeMount(() => {
                         <h4 class="card-title">All Enterprises</h4>
                     </div>
                     <div class="card-body">
-                        <DataTables :json-data="jsonData" :columns="columns" class="display">
-                            <template #status="props">
-                                <argon-badge :variant="'gradient'" :color="'success'">
-                                    {{ props.cellData }}
-                                </argon-badge>
-                            </template>
-                        </DataTables>
+                        <DataTables :json-data="jsonData" :columns="columns" class="display"/>
                     </div>
                 </div>
             </div>
@@ -40,8 +34,7 @@ onBeforeMount(() => {
 <script>
 export default {
     components: {
-        DataTables,
-        ArgonBadge
+        DataTables
     },
     data() {
         return {
@@ -52,6 +45,14 @@ export default {
                     'name': 'Chatterbug',
                     'status': 'Active',
                     'users': '10/12',
+                    'action': 'view',
+                    'year': '2013'
+                },
+                {
+                    'id': '1',
+                    'name': 'Halton',
+                    'status': 'Inactive',
+                    'users': '0/40',
                     'action': 'view',
                     'year': '2013'
                 }
@@ -81,13 +82,29 @@ export default {
                 },
                 {
                     title: 'Status',
-                    headerClass: 'text-start',
+                    headerClass: 'text-center',
                     data: 'status',
+                    render: (data) => {
+                        return `<div class="align-middle">
+                            <div class="my-auto">
+                                <span class="badge badge-${data === 'Active'?'success' : 'danger'}">
+                                    ${data}
+                                </span>
+                            </div>
+                        </div>`;
+                    }
                 },
                 {
                     title: 'Users',
-                    headerClass: 'text-start',
-                    data: 'users'
+                    headerClass: 'text-center',
+                    data: 'users',
+                    render: (data) => {
+                        return `<div class="align-middle">
+                            <div class="my-auto">
+                                    ${data}
+                            </div>
+                        </div>`;
+                    }
                 },
                 {
                     title: 'Action',
