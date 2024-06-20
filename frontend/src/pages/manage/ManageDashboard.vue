@@ -1,59 +1,26 @@
-<script setup>
-
-import { onBeforeMount } from "vue";
-import { usePiniaStore } from "@/store";
-
-import MiniStatisticsCard from "@/layouts/manage/cards/MiniStatisticsCard.vue";
-
-const store = usePiniaStore();
-
-onBeforeMount(() => {
-    store.setSideNavType("SidenavManageList");
-    store.setActiveSidebarLi("dashboard")
-    store.setShowNavbar(true);
-});
-
-</script>
-
 <template>
-    <div class="py-4 container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-                <mini-statistics-card title="Total Enterprises" value="0" description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+0%</span> since yesterday" :icon="{
-                    component: 'ni ni-building',
-                    background: 'bg-gradient-primary',
-                    shape: 'rounded-circle',
-                }" />
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <mini-statistics-card title="Total Users" value="1" description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+0%</span> since last week" :icon="{
-                    component: 'ni ni-circle-08',
-                    background: 'bg-gradient-danger',
-                    shape: 'rounded-circle',
-                }" />
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <mini-statistics-card title="New Clients" value="+3,462" description="<span
-                class='text-sm font-weight-bolder text-danger'
-                >-2%</span> since last quarter" :icon="{
-                    component: 'ni ni-paper-diploma',
-                    background: 'bg-gradient-success',
-                    shape: 'rounded-circle',
-                }" />
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <mini-statistics-card title="Sales" value="$103,430" description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+5%</span> than last month" :icon="{
-                    component: 'ni ni-cart',
-                    background: 'bg-gradient-warning',
-                    shape: 'rounded-circle',
-                }" />
-            </div>
+  <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+    <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+      <div class="flex-auto p-4">
+        <div class="flex flex-wrap">
+          <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+            <h5 class="text-blueGray-400 uppercase font-bold text-xs">TRAFFIC</h5><span
+              class="font-semibold text-xl text-blueGray-700">350,897</span>
+          </div>
+          <div class="relative w-auto pl-4 flex-initial">
+            <div
+              class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
+              <i class="far fa-chart-bar"></i></div>
+          </div>
         </div>
+        <p class="text-sm text-blueGray-400 mt-4"><span class="mr-2 text-emerald-500"><i class="fas fa-arrow-up"></i>
+            3.48% </span><span class="whitespace-nowrap">Since last month</span></p>
+      </div>
     </div>
+  </div>
 </template>
+<script>
+export default {
+  name: "dashboard-page"
+};
+</script>

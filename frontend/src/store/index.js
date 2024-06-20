@@ -10,8 +10,8 @@ export const usePiniaStore = defineStore('pinia', {
     isPinned: false,
     showConfig: false,
     sidebarType: "bg-white",
-    sideNavType: "SidenavList",
-    activeSidebarLi: "",
+    sideNavType: "ManageSidenav",
+    activeSidebarLi: "dashboard",
     mcolor: "",
     darkMode: false,
     isNavFixed: false,
@@ -21,7 +21,7 @@ export const usePiniaStore = defineStore('pinia', {
     showNavbar: true,
     showFooter: true,
     showMain: true,
-    layout: "",
+    layout: "default",
   }),
   getters: {
     HideConfigButton: (state) => state.hideConfigButton,
@@ -117,10 +117,12 @@ export const usePiniaStore = defineStore('pinia', {
         sidenav_show.classList.add("g-sidenav-hidden");
         sidenav_show.classList.remove("g-sidenav-pinned");
         this.isPinned = false;
+        this.ShowSidenav = true;
       } else {
         sidenav_show.classList.add("g-sidenav-pinned");
         sidenav_show.classList.remove("g-sidenav-hidden");
         this.isPinned = true;
+        this.ShowSidenav = false;
       }
       this.saveState();
     },

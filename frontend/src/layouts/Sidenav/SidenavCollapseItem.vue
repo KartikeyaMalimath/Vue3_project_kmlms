@@ -19,7 +19,18 @@ const props = defineProps({
 
 const checkActiveItem = () => {
   const defaultSlot = slots.default ? slots.default() : [];
-  isExpanded.value = defaultSlot.some(vnode => vnode.props && vnode.props.to === route.path);
+  isExpanded.value = defaultSlot.some(vnode => {
+    return vnode.props && vnode.props.to === route.path;
+  });
+
+  // Check if any child has the active class
+  if (!isExpanded.value) {
+    isExpanded.value = defaultSlot.some(vnode => {
+      return vnode.children && vnode.children.some(child => {
+        return child.props && child.props.class && child.props.class.includes(props.activeClass);
+      });
+    });
+  }
 };
 
 // Watch for route changes to update the expanded state
@@ -36,14 +47,13 @@ checkActiveItem();
       class="nav-link"
       :class="{ active: isExpanded }"
       aria-expanded="false"
-      data-bs-toggle="collapse"
       @click="isExpanded = !isExpanded"
     >
       <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
         <slot name="icon"></slot>
       </div>
       <span class="nav-link-text ms-2">{{ props.navText }}</span>
-      <i class="ms-auto material-icons">
+      <i class="ms-auto material-icons text-end">
         {{ isExpanded ? 'expand_less' : 'expand_more' }}
       </i>
     </a>

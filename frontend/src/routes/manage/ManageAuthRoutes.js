@@ -1,8 +1,14 @@
 const routes = [
-    {
+    {   
         path: '/',
-        name: 'ManageLogin',
-        component: () => import('@/pages/manage/ManageLogin.vue')
+        name: 'ManageAuth',
+        component: () => import('@/layouts/manage/ManageAuthLayout.vue'),
+        children: [
+            {
+              path: "",
+              component: () => import('@/pages/manage/ManageLogin.vue'),
+            },
+        ]
     }
 ];
 

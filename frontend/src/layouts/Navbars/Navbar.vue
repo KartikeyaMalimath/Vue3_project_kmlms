@@ -2,7 +2,7 @@
 import { computed, ref } from "vue";
 import { usePiniaStore } from "@/store";
 import { useRoute } from "vue-router";
-import Breadcrumbs from "@/layouts/BreadCrumbs.vue";
+import Breadcrumbs from "@/components/BreadCrumbs.vue";
 
 const showMenu = ref(false);
 const store = usePiniaStore();

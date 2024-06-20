@@ -8,6 +8,7 @@ import SidenavCollapseItem from "./SidenavCollapseItem.vue";
 const store = usePiniaStore();
 const setActiveSidebarLi = computed(() => store.ActiveSidebarLi)
 
+
 </script>
 
 <template>
@@ -27,12 +28,23 @@ const setActiveSidebarLi = computed(() => store.ActiveSidebarLi)
           </template>
         </sidenav-item>
       </li>
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-sm font-weight-bolder opacity-7">
+          Admin
+        </h6>
+        <hr class="dark horizontal my-1">
+      </li>
+      <SidenavItem to="/users/1" :class="{ active: setActiveSidebarLi === 'users' }" navText="Users">
+        <template v-slot:icon>
+          <span class="material-icons text-primary opacity-10">group</span>
+        </template>
+      </SidenavItem>
       <SidenavCollapseItem navText="Settings">
         <template v-slot:icon>
           <span class="material-icons text-primary opacity-10">settings</span>
         </template>
         <li class="nav-item">
-          <SidenavItem to="/profile" navText="Config">
+          <SidenavItem to="/profile" :class="{ active: setActiveSidebarLi === 'test' }" navText="Config">
             <template v-slot:icon>
               <span class="text-primary opacity-10">C</span>
             </template>

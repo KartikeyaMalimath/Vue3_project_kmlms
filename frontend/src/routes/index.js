@@ -21,7 +21,7 @@ const routes = [
   ...prefixedManageAuthRoutes,
   ...prefixedManageUserRoutes,
   {
-    path: '/:catchAll(.*)',
+    path: '/:pathMatch(.*)',
     name: 'PageNotFound',
     component: PageNotFound,
   },
