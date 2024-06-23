@@ -1,23 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './routes'
-import pinia from '@/store'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'; // Add this line
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import "./assets/css/nucleo-icons.css";
-import "./assets/css/nucleo-svg.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "@/assets/styles/tailwind.css";
+import { createApp } from "vue";
+import App from "./App.vue";
+import vuetify from "./plugins/vuetify";
+import "vee-validate";
+import "yup"
+import { loadFonts } from "./plugins/webfontloader";
+import router from "./router";
 
-library.add(fas);
-library.add(far);
-library.add(fab);
+loadFonts();
 
-const appInstance = createApp(App);
-appInstance.use(router);
-appInstance.use(pinia);
-appInstance.component('font-awesome-icon', FontAwesomeIcon);
-appInstance.mount('#app');
+const AppInstance = createApp(App);
+AppInstance.use(router);
+AppInstance.use(vuetify);
+AppInstance.mount("#app");
