@@ -6,7 +6,7 @@ import { useSidebarStore } from '@/stores/SidebarStateStore';
 // Define reactive state
 const breadcrumbs = ref([]);
 
-const { toggleSidebar } = useSidebarStore()
+const { toggleSidebar, $reset } = useSidebarStore()
 
 const route = useRoute();
 const router = useRouter();
@@ -22,6 +22,7 @@ watch(
 
 // Define the logout method
 const logout = async () => {
+  $reset()
   await router.push({ name: 'ManageAuth' });
   router.go(0)
 };

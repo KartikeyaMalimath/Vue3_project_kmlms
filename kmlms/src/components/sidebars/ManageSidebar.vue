@@ -4,9 +4,8 @@ import { useRouter } from 'vue-router';
 import { useSidebarStore } from '@/stores/SidebarStateStore'
 
 const sidebarStore = useSidebarStore();
-const { closeSidebar, openSidebar } = useSidebarStore();
+const { closeSidebar, openSidebar, setActiveLink } = useSidebarStore();
 const router = useRouter();
-const selectedItem = ref(0);
 const userItems = [
     { title: 'Dashboard', icon: 'mdi-view-dashboard', route: 'ManageDashboard' },
     { title: 'Enterprises', icon: 'mdi-domain', route: 'ManageEnterprises' },
@@ -19,7 +18,7 @@ const adminItems = [
 
 const navigateTo = (routeName, index) => {
     router.push({ name: routeName });
-    selectedItem.value = index;
+    setActiveLink(index);
 }
 
 const WindowToggleSidebar = () => {
@@ -46,18 +45,20 @@ onUnmounted(() => {
 <template>
     <v-navigation-drawer app v-model="sidebarStore.sidebarOpen" class="blue darken-3">
         <v-list dense>
-            <v-list-item class="py-4"
-                prepend-avatar="https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg?w=740&t=st=1719113715~exp=1719114315~hmac=c951ce47b0e18aa958bebab693af270be7d953d316155cd2b9fe8bbaed38288d"
-                subtitle="username@gmailcom" title="User Name">
+            <v-list-item class="py-4" subtitle="username@gmailcom" title="User Name">
+                <template v-slot:prepend>
+                    <v-avatar color="purple-darken-2" size="large">
+                        <span class="text-h6">KM</span>
+                    </v-avatar>
+                </template>
             </v-list-item>
             <v-divider></v-divider>
             <v-list-item-group class="py-4" v-model="selectedItem" active-class="primary--text">
-
-                <v-list-item v-for="(item, index) in userItems" :key="item.title" :prepend-icon="item.icon" :title="item.title"
-                    @click="navigateTo(item.route, index)" exact link
-                    :active="index === selectedItem" 
-                    :class="{'text-primary': index === selectedItem}"
+                <v-list-item v-for="(item, index) in userItems" :key="item.title" :prepend-icon="item.icon"
+                    :title="item.title" @click="navigateTo(item.route, index)" exact link
+                    :active="index === sidebarStore.sidebarActiveLink" :class="{ 'text-primary': index === sidebarStore.sidebarActiveLink }">
                 </v-list-item>
+
             </v-list-item-group>
 
             <v-divider></v-divider>
