@@ -2,27 +2,34 @@
     <v-container fluid class="fill-height">
         <v-row>
             <v-col class="12" sm="3">
-                <v-card class="position-sticky top-0">
+                <v-sheet class="position-sticky top-0 bg-transparent">
 
                     <!-- Content when data is loaded -->
                     <v-card-title class="cursor-pointer py-6" @click="navigateRouter('ManageEnterprises')" exact link>
                         <v-icon icon="mdi-arrow-left-circle-outline" />
-                        <span class="text-subtitle-1 ps-3">Back to All Enterprises</span>
+                        <span class="text-subtitle-1 ps-3">All Enterprises</span>
                     </v-card-title>
-                    <v-card class="ps-4">
-                        <v-card-text>
+                    <v-card density="compact">
+                        <v-card-text @click="scrollToElement('#ent-details-card')">
                             <v-list class="cursor-pointer">
                                 <v-icon class="me-2" icon="mdi-card-bulleted-settings-outline" />
                                 Enterprise Details
                             </v-list>
                         </v-card-text>
+                        <v-card-text @click="scrollToElement('#ent-users-card')">
+                            <v-list class="cursor-pointer">
+                                <v-icon class="me-2" icon="mdi-account-group" />
+                                Enterprise Users
+                            </v-list>
+                        </v-card-text>
                     </v-card>
-                </v-card>
+                </v-sheet>
             </v-col>
+            <v-divider vertical class="border-opacity-60"></v-divider>
             <v-col col="12" sm="9">
                 <v-skeleton-loader :loading="isEntDetailsLoading"
                     type="table-heading, list-item-two-line, list-item-two-line, list-item-two-line">
-                    <v-card width="100%">
+                    <v-card width="100%" id="ent-details-card">
                         <v-card-title>
                             <div class="d-flex justify-between">
                                 {{ enterpriseData.details.name }}
@@ -157,7 +164,7 @@
                 </v-skeleton-loader>
                 <v-divider size="0" class="my-4"></v-divider>
 
-                <v-card>
+                <v-card id="ent-users-card">
                     <v-card-title>
                         <span>
                             Enterprise Users
@@ -196,8 +203,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useGoTo } from 'vuetify'
 
 const router = useRouter();
+const goTo = useGoTo()
 
 const navigateRouter = (routeName) => {
     router.push({ name: routeName });
@@ -235,7 +244,7 @@ onMounted(async () => {
                 },
             ];
             entpUserLoading.value = false;
-        }, 1000);
+        }, 2500);
 
         setTimeout(() => {
             enterpriseData.value = {
@@ -285,4 +294,14 @@ const cancelEditing = () => {
 // Reactive variables for edit mode
 const isEditing = ref(false);
 const tempData = ref({});
+
+const scrollToElement = (elementId) => {
+    const options = {
+        duration: 300,
+        easing: 'easeOutCubic',
+        offset: -25,
+    }
+    console.log(options);
+    goTo(elementId, options)
+}
 </script>

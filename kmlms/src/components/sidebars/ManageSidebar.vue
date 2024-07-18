@@ -9,7 +9,8 @@ const router = useRouter();
 const userItems = [
     { title: 'Dashboard', icon: 'mdi-view-dashboard', route: 'ManageDashboard' },
     { title: 'Enterprises', icon: 'mdi-domain', route: 'ManageEnterprises' },
-    { title: 'My Profile', icon: 'mdi-account', route: 'ManageMyProfile' },
+    { title: 'Store', icon: 'mdi-cart', route: 'ManageStore'},
+    { title: 'Sales', icon: 'mdi-cash-multiple', route: 'ManageMyProfile' },
 ];
 const adminItems = [
     { title: 'Users', icon: 'mdi-account-group', route: 'ManageUsers' },

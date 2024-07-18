@@ -21,16 +21,24 @@ const routes = [
         }
       },
       {
-        path: "enterprise/:eid?",
+        path: "enterprises/:eid?",
         name: 'ManageEnterpriseDetails',
         component: () => import('@/pages/management/ManageEnterpriseDetails.vue'),
         meta: {
           breadcrumb: [
-            { title: 'Enterprises', disabled: false, href: 'ManageEnterprises' },
+            { title: 'Enterprises', disabled: false, routeName: 'ManageEnterprises' },
             { title: 'Enterprise Details', disabled: true, routeName: 'ManageEnterpriseDetails' }
           ]
         }
       },
+      {
+        path: "store",
+        name: 'ManageStore',
+        component: () => import('@/pages/management/ManageStore.vue'),
+        meta: {
+          breadcrumb: [{ title: 'Store', disabled: false, routeName: 'ManageStore' }]
+        }
+      }
     ]
   }
 ];
