@@ -10,6 +10,7 @@ const userItems = [
     { title: 'Dashboard', icon: 'mdi-view-dashboard', route: 'ManageDashboard' },
     { title: 'Enterprises', icon: 'mdi-domain', route: 'ManageEnterprises' },
     { title: 'Store', icon: 'mdi-cart', route: 'ManageStore'},
+    { title: 'Asset Library', icon: 'mdi-image-multiple', route: 'ManageAssets'},
     { title: 'Sales', icon: 'mdi-cash-multiple', route: 'ManageMyProfile' },
 ];
 const adminItems = [

@@ -1,0 +1,12 @@
+{
+    "vetur.workingDirectories": [
+      {
+        "directory": "./kmlms"
+      }
+    ],
+    "vetur.completion.scaffoldSnippetSources": {
+      "workspace": "💼",
+      "user": "🗒️",
+      "vetur": "✌"
+    }
+  }

@@ -22,7 +22,7 @@ export const useSidebarStore = defineStore('sidebar', {
       this.activeLink = linkIndex
     },
     $reset() {
-      // localStorage.removeItem('sidebar');
+      localStorage.removeItem('sidebar');
       console.log('sessions closed')
     }
   },
