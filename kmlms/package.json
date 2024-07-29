@@ -11,7 +11,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-vue": "^6.0.0",
     "@mdi/font": "5.9.55",
+    "ckeditor5": "^42.0.2",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "roboto-fontface": "*",
